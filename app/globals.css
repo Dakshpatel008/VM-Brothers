@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'F37 Bolton';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/wp-content/uploads/2026/02/F37BoltonArabic-VF.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Gallient';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/wp-content/uploads/2026/02/Gallient.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Gallient Regular';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/wp-content/uploads/2026/02/Gallient.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Garamond MT W04';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/wp-content/uploads/2026/02/Garamond-MT-W04-Bold-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Garamond MT W04';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/wp-content/uploads/2026/02/Garamond-MT-W04-Italic.woff2') format('woff2');
+}
+
+:root {
+  --font-heading: 'Gallient', serif;
+  --font-serif: 'Garamond MT W04', serif;
+  --font-body: 'F37 Bolton', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --color-primary: #313131;
+  --color-dark: #1a1a1a;
+  --color-accent: #B6AB99;
+  --color-cream: #EEEBE4;
+  --color-bg: #F5F5F5;
+  --color-white: #FFFFFF;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* Typography styles matching original */
+h1, h2, h3, .font-gallient {
+  font-family: var(--font-heading);
+}
+
+.font-garamond {
+  font-family: var(--font-serif);
+}
+
+.font-bolton {
+  font-family: var(--font-body);
+}
+
+/* Mouse Scroll Animation */
+@keyframes mouseScroll {
+  0% { opacity: 0; transform: translateY(0); }
+  10% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(15px); }
+}
+
+.scroller-anim {
+  animation: mouseScroll 2.2s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+}
+
+/* Creative Button Hover Animation (uc_btn-7: bottom to top wipe) */
+.creative-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: color 0.4s ease, border-color 0.4s ease;
+  z-index: 1;
+}
+
+.creative-btn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--color-accent);
+  transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: -1;
+}
+
+.creative-btn:hover::after {
+  height: 100%;
+}
+
+.creative-btn-dark::after {
+  background-color: var(--color-primary);
+}
+
+.creative-btn-white::after {
+  background-color: var(--color-white);
+}
+
+/* Social glare button */
+.social-btn-glare {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+
+.social-btn-glare::before {
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: var(--color-accent);
+  transition: all 0.35s;
+  z-index: 0;
+}
+
+.social-btn-glare:hover::before {
+  top: 0;
+}
+
+.social-btn-glare i, .social-btn-glare svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* The intro reveals the actual hero video; it never swaps video players. */
+.intro-char {
+  transform: translate3d(0, 110%, 0);
+  will-change: transform;
+}
+
+.home-intro[data-intro="loading"] [data-intro-media] {
+  clip-path: inset(50%);
+}
+
+.home-intro[data-intro="loading"] header,
+.home-intro[data-intro="loading"] [data-intro-content],
+.home-intro[data-intro="loading"] [data-intro-scroll] {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-intro .intro-title { display: none; }
+  .home-intro[data-intro="loading"] [data-intro-media] { clip-path: none; }
+  .home-intro[data-intro="loading"] header,
+  .home-intro[data-intro="loading"] [data-intro-content],
+  .home-intro[data-intro="loading"] [data-intro-scroll] { visibility: visible; }
+}
+
+/* Line mask utility for text reveals */
+.text-mask {
+  overflow: hidden;
+  display: block;
+}
+
+.line-mask {
+  overflow: hidden;
+  display: block;
+}
+
+/* Swiper custom overrides */
+.swiper-button-prev, .swiper-button-next {
+  color: #313131 !important;
+}
+
+/* Smooth scrolling helper */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
