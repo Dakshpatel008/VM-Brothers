@@ -1,0 +1,32 @@
+.section { background: #eeebe4; }
+.viewport { padding: 100px 0 32px; }
+.heading { padding: 0 6vw 32px; text-align: center; }
+.heading > span, .number, .hint { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; }
+.heading > span { color: #80735f; }
+.heading h2 { margin-top: 12px; font-size: clamp(30px, 3.5vw, 58px); line-height: 1.05; }
+.track { margin: 0; padding: 0; list-style: none; }
+.slide { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 6vw; padding: 40px 6vw; }
+.number { display: block; margin-bottom: 28px; color: #80735f; }
+.number > span { margin-left: 12px; opacity: .6; }
+.copy h3 { max-width: 650px; font-size: clamp(38px, 5.2vw, 88px); line-height: 1.02; }
+.copy p { max-width: 420px; margin-top: 28px; font-size: 16px; line-height: 1.7; color: #626059; font-weight: 300; }
+.image { position: relative; height: 48vh; min-height: 240px; overflow: hidden; border-radius: 4px; }
+.hint { display: none; }
+.section[data-pinned] .viewport { position: sticky; top: 0; display: flex; flex-direction: column; height: 100svh; overflow: hidden; }
+.section[data-pinned] .track { display: flex; flex: 1; min-height: 0; will-change: transform; }
+.section[data-pinned] .slide { flex: 0 0 100%; min-width: 0; padding-top: 0; padding-bottom: 0; }
+.section[data-pinned] .image { height: 100%; max-height: 560px; min-height: 0; }
+.section[data-pinned] .hint { display: flex; justify-content: space-between; margin: 26px 6vw 0; padding-top: 16px; border-top: 1px solid #31313126; color: #80735f; }
+.hint span { font-size: 22px; line-height: 12px; }
+@media (max-width: 767px) {
+  .viewport { padding-top: 96px; padding-bottom: 24px; }
+  .heading { padding-bottom: 24px; }
+  .heading h2 { font-size: clamp(28px, 7.5vw, 42px); }
+  .slide { grid-template-columns: 1fr; gap: 24px; }
+  .section[data-pinned] .slide { grid-template-rows: auto minmax(0, 1fr); }
+  .number { margin-bottom: 12px; }
+  .copy h3 { font-size: clamp(32px, 9vw, 48px); }
+  .copy p { margin-top: 12px; font-size: 14px; line-height: 1.5; }
+  .image { height: 32vh; }
+  .section[data-pinned] .hint { margin-top: 20px; }
+}

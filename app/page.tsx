@@ -9,6 +9,7 @@ import ScrollTextReveal from "@/components/animations/ScrollTextReveal";
 import TextRevealFromY from "@/components/animations/TextRevealFromY";
 import StackingCards from "@/components/animations/StackingCards";
 import DeliberateApproach from "@/components/ui/DeliberateApproach";
+import HorizontalServices from "@/components/ui/HorizontalServices";
 import { publishedProjects, siteContent } from "@/data/siteContent";
 
 export const metadata: Metadata = {
@@ -39,10 +40,7 @@ export default function HomePage() {
 
       <StackingCards projects={publishedProjects} />
 
-      <section className="bg-[#EAE6DF]/55 px-6 py-24 md:px-12 md:py-32"><div className="mx-auto max-w-7xl">
-        <div className="mx-auto mb-14 max-w-3xl text-center"><span className="text-xs uppercase tracking-[0.3em] text-[#B6AB99]">Our Services</span><h2 className="mt-4 font-gallient text-4xl md:text-5xl">Support for Every Property Journey</h2></div>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{siteContent.services.slice(0, 6).map((service, index) => <article key={service.id} className="rounded-2xl border border-[#313131]/10 bg-[#F5F5F5] p-7 md:p-9"><span className="text-xs tracking-[0.2em] text-[#B6AB99]">0{index + 1}</span><h3 className="mt-5 font-gallient text-2xl">{service.title}</h3><p className="mt-4 text-sm font-light leading-relaxed text-[#313131]/70">{service.description}</p></article>)}</div>
-      </div></section>
+      <HorizontalServices />
 
       <DeliberateApproach title="A Clearer Way to Navigate Real Estate" description="From understanding your requirements and shortlisting suitable properties to arranging site visits and supporting the booking process, VM Brothers keeps each step focused, practical, and transparent." ctaText="How We Work" ctaHref="/how-we-work" />
 
