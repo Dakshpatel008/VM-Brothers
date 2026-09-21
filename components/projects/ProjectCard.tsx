@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import CreativeButton from "../ui/CreativeButton";
+import Link from "next/link";
 import type { VmProject } from "@/data/siteContent";
 
 export default function ProjectCard({ project }: { project: VmProject }) {
@@ -35,19 +35,20 @@ export default function ProjectCard({ project }: { project: VmProject }) {
         </p>
 
         <div className="pt-2 flex items-center justify-between">
-          <CreativeButton
-            href={`/projects/${project.slug}`}
-            variant="outline"
-            showIcon={true}
-            className="!px-6 !py-2.5"
-          >
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-2.5 text-xs font-medium uppercase tracking-widest text-white transition-colors duration-300 group-hover:border-[#B6AB99] group-hover:bg-[#B6AB99]">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-current" aria-hidden="true" />
             View project
-          </CreativeButton>
+          </span>
           {project.imageIsRepresentative && (
             <span className="text-[9px] uppercase tracking-[0.16em] text-white/60">Representative imagery</span>
           )}
         </div>
       </div>
+      <Link
+        href={`/projects/${project.slug}`}
+        aria-label={`View ${project.name}`}
+        className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-offset-[-4px]"
+      />
     </article>
   );
 }

@@ -28,7 +28,7 @@ export default function HomePage() {
           <h1 className="font-gallient text-[clamp(3.2rem,12vw,7rem)] leading-[0.9] text-white">VM Brothers</h1>
           <div className="h-px w-40 bg-white/40" />
           <p className="max-w-xl text-sm font-light leading-relaxed text-white/85 sm:text-lg">Find the right property with local market guidance, transparent communication, and support from discovery to booking.</p>
-          <div className="flex flex-wrap justify-center gap-4"><CreativeButton href="/projects" variant="outline" showIcon>Explore Projects</CreativeButton><CreativeButton href="/contact" variant="outline">Book a Site Visit</CreativeButton></div>
+          <div className="flex flex-wrap justify-center gap-4"><CreativeButton href="/projects" variant="outline" showIcon>Explore Projects</CreativeButton><CreativeButton href="/contact#enquiry" variant="outline">Book a Site Visit</CreativeButton></div>
         </div><div data-intro-scroll=""><ScrollMouseIcon targetId="intro-section" label="Scroll to explore" /></div>
       </section>
 

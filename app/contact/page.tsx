@@ -53,7 +53,7 @@ export default function ContactPage() {
   return (
     <>
       <Header theme="solid" />
-      <main className="min-h-screen pt-24">
+      <main className="min-h-screen">
         <PageHero
           eyebrow="Let’s Talk Property"
           title="Contact VM Brothers"
@@ -89,7 +89,7 @@ export default function ContactPage() {
             </div>
           </aside>
 
-          <div className="min-w-0 rounded-2xl bg-[#EAE6DF]/70 p-6 sm:p-9 lg:col-span-8 lg:p-12">
+          <div id="enquiry" className="min-w-0 scroll-mt-24 rounded-2xl bg-[#EAE6DF]/70 p-6 sm:p-9 lg:col-span-8 lg:p-12">
             <h2 className="font-gallient text-3xl md:text-4xl">Property Enquiry</h2>
             <p className="mt-3 text-sm font-light text-[#313131]/65">Fields marked with * are required.</p>
             <form className="mt-9 grid gap-6 sm:grid-cols-2" onSubmit={handleSubmit}>

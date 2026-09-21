@@ -79,8 +79,8 @@ export default function HomeIntro({ children }: { children: ReactNode }) {
       title.querySelectorAll("[data-intro-word]").forEach((word) => {
         Array.from(word.children).forEach((letter, index) => {
           letterAnimations.push(letter.animate(
-            [{ transform: "translate3d(0, 110%, 0)" }, { transform: "translate3d(0, 0, 0)" }],
-            { duration: 500, delay: 200 + index * 40, easing: "cubic-bezier(0.23, 1, 0.32, 1)", fill: "both" },
+            [{ transform: "translate3d(0, 160%, 0)" }, { transform: "translate3d(0, 0, 0)" }],
+            { duration: 500, delay: index * 40, easing: "cubic-bezier(0.23, 1, 0.32, 1)", fill: "both" },
           ));
         });
       });
@@ -148,7 +148,7 @@ export default function HomeIntro({ children }: { children: ReactNode }) {
             {siteContent.company.name.split(" ").map((word, index) => (
               <span key={index}>
                 {index > 0 && <span data-intro-gap="" className="inline-block w-[0.45em]" />}
-                <span data-intro-word="" className="inline-block overflow-hidden pb-[0.2em] align-top">
+                <span data-intro-word="" className="-my-[0.3em] inline-block overflow-hidden py-[0.3em] align-top">
                   {word.split("").map((char, charIndex) => <span key={charIndex} className="intro-char inline-block">{char}</span>)}
                 </span>
               </span>

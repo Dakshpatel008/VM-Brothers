@@ -52,13 +52,19 @@ for (const scenario of ['desktop', 'cached-refresh', 'mobile', 'reduced', 'resiz
   await send('Network.setCacheDisabled', { cacheDisabled: scenario === 'desktop' });
   await send('Emulation.setCPUThrottlingRate', { rate: scenario === 'desktop' ? 4 : 1 });
   await send('Network.setBlockedURLs', { urls: scenario === 'failed-video' ? ['*.mp4'] : [] });
-  await send('Page.navigate', { url: `http://localhost:3000/?intro-check=${scenario}` });
+  await send('Page.navigate', { url: `http://127.0.0.1:3000/?intro-check=${scenario}` });
   let resized = false;
   let checkedLock = false;
   let complete = false;
+  let capturedTitle = false;
   for (let attempt = 0; attempt < 120; attempt++) {
     await pause(150);
     const phase = await evaluate(`document.querySelector('.home-intro')?.dataset.intro`);
+    if (!capturedTitle && ['desktop', 'mobile'].includes(scenario) && await evaluate('window.introSamples?.some(sample => sample.settledLetters)')) {
+      const screenshot = await send('Page.captureScreenshot', { format: 'png' });
+      await writeFile(`scratch/intro-title-${scenario}.png`, Buffer.from(screenshot.data, 'base64'));
+      capturedTitle = true;
+    }
     if (scenario === 'desktop' && phase === 'loading' && !checkedLock && await evaluate("document.body.style.overflow === 'hidden'")) {
       await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: 200, y: 200, deltaX: 0, deltaY: 500 });
       await pause(150);

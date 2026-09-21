@@ -11,6 +11,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
   const pathname = usePathname();
 
   useLayoutEffect(() => {
+    if (window.location.hash) return;
     lenisRef.current?.scrollTo(0, { immediate: true });
     window.scrollTo(0, 0);
   }, [pathname]);

@@ -15,7 +15,7 @@ export default function HowWeWorkPage() {
   return (
     <>
       <Header theme="solid" />
-      <main className="min-h-screen pt-24">
+      <main className="min-h-screen">
         <PageHero
           eyebrow="A Clear Process"
           title="How We Work"
@@ -35,7 +35,7 @@ export default function HowWeWorkPage() {
             ))}
           </div>
           <div className="mt-14 text-center">
-            <CreativeButton href="/contact" variant="accent" showIcon>Book a Site Visit</CreativeButton>
+            <CreativeButton href="/contact#enquiry" variant="accent" showIcon>Book a Site Visit</CreativeButton>
           </div>
         </section>
       </main>

@@ -84,7 +84,7 @@ export default function Header({
 
           {/* Right: Contact Button & Social (Desktop) */}
           <div className="hidden lg:flex items-center gap-6">
-            <CreativeButton href="/contact" variant="outline" className="!px-6 !py-2.5">
+            <CreativeButton href="/contact#enquiry" variant="outline" className="!px-6 !py-2.5">
               Contact Us
             </CreativeButton>
             <SocialIcons color="light" />
@@ -146,7 +146,7 @@ export default function Header({
 
         <div className="flex flex-col gap-6 border-t border-white/10 pt-8">
           <CreativeButton
-            href="/contact"
+            href="/contact#enquiry"
             variant="outline"
             className="w-full text-center"
             onClick={() => setIsMobileMenuOpen(false)}

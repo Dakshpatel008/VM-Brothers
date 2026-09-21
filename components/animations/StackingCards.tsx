@@ -112,9 +112,9 @@ function StackingCard({
               <p className={`text-xs uppercase tracking-[0.18em] ${dark ? "text-white/60" : "text-[#313131]/60"}`}>{project.location}</p>
               <p className={`mt-4 text-sm font-light leading-relaxed md:text-base ${dark ? "text-white/75" : "text-[#313131]/70"}`}>{project.summary}</p>
             </div>
-            <Link href={`/projects/${project.slug}`} className={`mt-5 w-fit border-b pb-1 text-xs uppercase tracking-[0.18em] ${dark ? "border-white/35 text-white" : "border-[#313131]/35 text-[#313131]"}`}>
+            <span className={`mt-5 w-fit border-b pb-1 text-xs uppercase tracking-[0.18em] ${dark ? "border-white/35 text-white" : "border-[#313131]/35 text-[#313131]"}`}>
               View project
-            </Link>
+            </span>
           </div>
 
           <div className="relative min-h-[180px] overflow-hidden rounded-xl lg:min-h-[230px]">
@@ -126,6 +126,11 @@ function StackingCard({
             )}
           </div>
         </div>
+        <Link
+          href={`/projects/${project.slug}`}
+          aria-label={`View ${project.name}`}
+          className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-offset-[-4px]"
+        />
       </motion.article>
     </div>
   );

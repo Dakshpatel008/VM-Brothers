@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -33,20 +34,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (!project) notFound();
 
-  const currentIndex = publishedProjects.findIndex((item) => item.slug === slug);
-  const nextProject = publishedProjects[(currentIndex + 1) % publishedProjects.length];
-
   return (
     <>
       <Header />
       <main className="min-h-screen bg-[#F5F5F5]">
-        <section className="relative isolate flex min-h-[78svh] items-end overflow-hidden px-6 pb-16 pt-36 text-white md:px-12 md:pb-24">
+        <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden px-6 pb-16 pt-36 text-white md:px-12 md:pb-24">
           <Image
             src={project.heroImage}
             alt=""
             fill
             priority
-            className="-z-20 object-cover"
+            className="-z-20 object-cover object-bottom"
             sizes="100vw"
           />
           <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/40 to-black/30" />
@@ -100,7 +98,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </dl>
             <div className="mt-8">
-              <CreativeButton href="/contact" variant="accent" showIcon>
+              <CreativeButton href="/contact#enquiry" variant="accent" showIcon>
                 Enquire or Book a Visit
               </CreativeButton>
             </div>
@@ -108,15 +106,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         <section className="bg-[#1A1A1A] px-6 py-20 text-white md:px-12">
-          <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <div>
-              <span className="text-xs uppercase tracking-[0.3em] text-[#B6AB99]">Explore Next</span>
-              <h2 className="mt-3 font-gallient text-3xl text-white md:text-5xl">{nextProject.name}</h2>
-            </div>
-            <CreativeButton href={`/projects/${nextProject.slug}`} variant="outline" showIcon>
-              View Project
-            </CreativeButton>
-          </div>
+          <nav aria-labelledby="explore-projects-heading" className="mx-auto max-w-7xl">
+            <h2 id="explore-projects-heading" className="font-gallient text-3xl md:text-5xl">Explore Our Projects</h2>
+            <ul className="mt-10 divide-y divide-white/20 border-y border-white/20">
+              {publishedProjects.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/projects/${item.slug}`}
+                    aria-current={item.slug === slug ? "page" : undefined}
+                    className="flex items-center justify-between gap-6 py-6 transition-colors hover:text-[#B6AB99] aria-[current=page]:text-[#B6AB99]"
+                  >
+                    <span className="min-w-0 font-gallient text-2xl leading-tight md:text-3xl">{item.name}</span>
+                    <span className="shrink-0 text-[10px] uppercase tracking-[0.16em]">
+                      {item.slug === slug ? "Viewing" : "View project"}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </section>
 
         <p className="mx-auto max-w-5xl px-6 py-8 text-center text-xs leading-relaxed text-[#313131]/55 md:px-12">
