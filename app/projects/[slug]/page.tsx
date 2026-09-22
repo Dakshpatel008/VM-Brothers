@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CreativeButton from "@/components/ui/CreativeButton";
-import { publishedProjects, siteContent } from "@/data/siteContent";
+import { siteContent } from "@/data/siteContent";
+import { publishedProjects } from "@/data/projectLayouts";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -103,6 +104,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </CreativeButton>
             </div>
           </aside>
+        </section>
+
+        <section aria-labelledby="home-layouts-heading" className="mx-auto max-w-7xl px-6 pb-24 md:px-12 md:pb-32">
+          <h2 id="home-layouts-heading" className="font-gallient text-4xl md:text-6xl">Home Layouts</h2>
+          <p className="mt-5 text-[#313131]/75">Explore the home configurations and request a floor plan from our team.</p>
+          <ul className="mt-10 divide-y divide-[#313131]/20 border-y border-[#313131]/20">
+            {project.layouts.map((layout) => (
+              <li key={layout.slug}>
+                <Link href={`/projects/${project.slug}/layouts/${layout.slug}`} className="flex items-center justify-between gap-6 py-7 hover:text-[#766954]">
+                  <h3 className="font-gallient text-3xl md:text-4xl">{layout.title}</h3>
+                  <span className="text-xs uppercase tracking-[0.16em]">Explore layout <span aria-hidden="true">↗</span></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="bg-[#1A1A1A] px-6 py-20 text-white md:px-12">

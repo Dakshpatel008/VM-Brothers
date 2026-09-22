@@ -10,6 +10,7 @@ import TextRevealFromY from "@/components/animations/TextRevealFromY";
 import StackingCards from "@/components/animations/StackingCards";
 import DeliberateApproach from "@/components/ui/DeliberateApproach";
 import HorizontalServices from "@/components/ui/HorizontalServices";
+import FAQDemo from "@/components/ui/demo";
 import { publishedProjects, siteContent } from "@/data/siteContent";
 
 export const metadata: Metadata = {
@@ -60,7 +61,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-24 md:px-12 md:py-32"><div className="mb-12 text-center"><span className="text-xs uppercase tracking-[0.3em] text-[#B6AB99]">Frequently Asked Questions</span><h2 className="mt-4 font-gallient text-4xl md:text-5xl">Property Questions, Answered</h2></div><div className="divide-y divide-[#313131]/15 border-y border-[#313131]/15">{siteContent.faqs.map((faq) => <details key={faq.question} className="py-6"><summary className="cursor-pointer list-none pr-8 font-gallient text-xl">{faq.question}</summary><p className="max-w-3xl pt-4 text-sm font-light leading-relaxed text-[#313131]/70">{faq.answer}</p></details>)}</div></section>
+      <FAQDemo />
     </main><Footer /></HomeIntro>
   );
 }

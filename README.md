@@ -2,6 +2,33 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Project home configurations live in the server-only `data/projectLayouts.ts` file,
+keyed by project slug. The eight initial configurations use the supplied research pack;
+no project drawings or photographs were supplied. The 2 BHK and 3 BHK pages use
+25 locally stored reference plans grouped by the source's bedroom counts
+(18 two-bedroom and 7 three-bedroom plans). The 1 BHK and 4 BHK pages have no matching
+samples and show the request panel. Provenance, dimensions, and bedroom mappings
+are recorded in `data/temporaryFloorPlans.json`.
+
+To add real assets, place the files in `public/projects/` and populate the layout's
+optional `floorPlans` and `photos` arrays. Each image needs `src` (a public URL path),
+`label`, descriptive `alt`, and its actual pixel `width` and `height`. An optional
+`pdf` record takes `src` and `label`. Only add project-specific, verified assets;
+omit unavailable records. Replace each layout's `floorPlans: temporaryFloorPlans(...)`
+with its actual image array and omit `isTemporaryPreview` on verified drawings.
+This automatically removes the temporary-preview notice. The viewer, labeled plan selection, PDF link, and photo
+gallery appear automatically. Rebuild after changing the data.
+
+After building and starting the site, run `node scripts/check-layouts.mjs` to check
+all eight routes, navigation, metadata, sitemap, local preview assets and 404s.
+Update the preview checks when original plans replace the Era references.
+
+Floor-plan data stays out of shared client bundles, and the image lightbox loads
+on demand. The hero uses `Home-2-1-web.mp4`: identical video frames to the original,
+with its unused audio removed and MP4 metadata moved to the front for fast playback.
+The original video is retained. Run `node scripts/check-performance.mjs` after a
+production build to check the page payloads and lazy-loading boundaries.
+
 Create `.env.local` and configure the server-side contact delivery webhook:
 
 ```env

@@ -50,6 +50,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/wp-content/uploads/2026/02/Gallient.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/wp-content/uploads/2026/02/F37BoltonArabic-VF.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      </head>
       <body suppressHydrationWarning className="bg-[#F5F5F5] text-[#313131] antialiased selection:bg-[#B6AB99] selection:text-white">
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>

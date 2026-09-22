@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { publishedProjects } from "@/data/siteContent";
+import { publishedProjects } from "@/data/projectLayouts";
 
 const staticRoutes = [
   "",
@@ -25,5 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...publishedProjects.map((project) => ({
       url: `${baseUrl}/projects/${project.slug}`,
     })),
+    ...publishedProjects.flatMap((project) => project.layouts.map((layout) => ({
+      url: `${baseUrl}/projects/${project.slug}/layouts/${layout.slug}`,
+    }))),
   ];
 }

@@ -32,6 +32,24 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface LayoutImage {
+  isTemporaryPreview?: boolean;
+  src: string;
+  label: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+export interface HomeLayout {
+  slug: string;
+  title: string;
+  description: string;
+  floorPlans?: readonly LayoutImage[];
+  pdf?: { src: string; label: string };
+  photos?: readonly LayoutImage[];
+}
+
 export interface VmProject {
   slug: string;
   name: string;
@@ -360,7 +378,7 @@ export const siteContent = {
     "Prices, availability, offers, and specifications are subject to change. Please contact VM Brothers for the latest project information.",
   assets: {
     heroVideo: {
-      path: "/wp-content/uploads/2026/02/Home-2-1.mp4",
+      path: "/wp-content/uploads/2026/02/Home-2-1-web.mp4",
       isRepresentative: true,
     },
     logo: {
@@ -391,6 +409,6 @@ export const siteContent = {
   },
 } as const;
 
-export const publishedProjects = siteContent.projects.filter(
+export const publishedProjects: readonly VmProject[] = siteContent.projects.filter(
   (project) => project.publish
 );
